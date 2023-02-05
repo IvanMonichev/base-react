@@ -1,22 +1,36 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import './styles/App.css';
+import PostList from './components/PostList';
+import MyButton from './components/UI/button/MyButton';
+import MyInput from './components/UI/input/MyInput';
+import PostForm from './components/PostForm';
 
 const App = () => {
-  const [likes, setLikes] = useState(0);
 
-  const increment = () => {
-    setLikes(likes + 1);
-    console.log(likes - 1);
+  const [posts, setPosts] = useState([
+    { id: 1, title: 'JavaScript', body: 'Description' },
+    { id: 2, title: 'JavaScript 2', body: 'Description' },
+    { id: 3, title: 'JavaScript 3', body: 'Description' },
+  ]);
+
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost])
   }
 
-  const decrement = () => {
-    setLikes(likes - 1)
+  const removePost = (post) => {
+    setPosts(posts.filter(p => p.id !== post.id))
   }
 
   return (
-    <div>
-      <h1>{likes}</h1>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
+    <div className="App">
+      <PostForm
+        create={createPost}
+      />
+      <PostList
+        posts={posts}
+        title="Посты про JS"
+        remove={removePost}
+      />
     </div>
   );
 };

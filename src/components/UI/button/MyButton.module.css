@@ -1,0 +1,14 @@
+.myBtn {
+  padding: 5px 15px;
+  color: deepskyblue;
+  border: 1px solid deepskyblue;
+  border-radius: 11px;
+  font-size: 14px;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.6s;
+}
+
+.myBtn:hover {
+  opacity: 0.6;
+}
