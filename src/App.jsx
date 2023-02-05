@@ -4,6 +4,7 @@ import PostList from './components/PostList';
 import MyButton from './components/UI/button/MyButton';
 import MyInput from './components/UI/input/MyInput';
 import PostForm from './components/PostForm';
+import MySelect from './components/UI/select/MySelect';
 
 const App = () => {
 
@@ -26,11 +27,21 @@ const App = () => {
       <PostForm
         create={createPost}
       />
-      <PostList
-        posts={posts}
-        title="Посты про JS"
-        remove={removePost}
-      />
+      <hr style={{margin: "15px 0"}}/>
+      <div>
+        <MySelect
+          defaultValue="Сортировка"
+          options={[
+            {value: 'title', name: 'По названию'},
+            {value: 'body', name: 'По описанию'},
+          ]}
+        />
+      </div>
+      {/*Условная отрисовка*/}
+      {posts.length
+        ? <PostList posts={posts} title="Посты про JS" remove={removePost} />
+        : <h2 style={{textAlign: 'center'}}>Посты не были найдены.</h2>
+      }
     </div>
   );
 };
