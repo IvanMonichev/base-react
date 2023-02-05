@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './styles/App.css';
 import PostList from './components/PostList';
-import MyButton from './components/UI/button/MyButton';
-import MyInput from './components/UI/input/MyInput';
 import PostForm from './components/PostForm';
 import MySelect from './components/UI/select/MySelect';
+
+// https://youtu.be/GNrdg3PzpJQ?t=4176
 
 const App = () => {
 

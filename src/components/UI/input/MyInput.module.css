@@ -2,7 +2,10 @@
   width: 100%;
   padding: 10px 20px;
   margin: 5px 0;
-  border: 1px solid deepskyblue;
+  border: none;
+  border: 1px solid #61dafb;;
   border-radius: 11px;
   font-size: 14px;
+  background-color: #000;
+  color: white;
 }
