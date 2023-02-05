@@ -4,6 +4,7 @@ const MySelect = ({options, defaultValue, value, onChange}) => {
   return (
     <select
       value={value}
+      className="my-select"
       onChange={evt => onChange(evt.target.value)}
     >
       <option disabled={true} value="">{defaultValue}</option>
