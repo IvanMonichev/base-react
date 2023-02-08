@@ -7,6 +7,8 @@ import Header from './components/header/Header';
 import MyInput from './components/UI/input/MyInput';
 import Footer from './components/Footer';
 import PostFilter from './components/PostFilter';
+import MyModal from './components/UI/MyModal/MyModal';
+import MyButton from './components/UI/button/MyButton';
 
 const App = () => {
 
@@ -16,7 +18,8 @@ const App = () => {
     { id: 3, title: 'гг', body: 'гг' },
   ]);
 
-  const [filter, setFilter] = useState({sort: '', query: ''})
+  const [filter, setFilter] = useState({sort: '', query: ''});
+  const [modal, setModal] = useState(false);
 
   // Сортировка постов.
   const sortedPost = useMemo(() => {
@@ -32,7 +35,8 @@ const App = () => {
   }, [filter.query, sortedPost])
 
   const createPost = (newPost) => {
-    setPosts([...posts, newPost])
+    setPosts([...posts, newPost]);
+    setModal(false);
   }
 
   const removePost = (post) => {
@@ -42,16 +46,14 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <PostForm
-        create={createPost}
-      />
-      <hr style={{margin: "15px 0"}}/>
+      <MyButton style={{marginBottom: '15px'}} onClick={() => setModal(true)}>
+        Создать пользователя
+      </MyButton>
+      <MyModal visible={modal} setVisible={setModal}>
+        <PostForm create={createPost} />
+      </MyModal>
       <PostFilter filter={filter} setFilter={setFilter} />
-      {/*Условная отрисовка*/}
-      {sortedAndSearchedPost.length
-        ? <PostList posts={sortedAndSearchedPost} title="Посты про JS" remove={removePost} />
-        : <h2 style={{textAlign: 'center'}}>Посты не были найдены.</h2>
-      }
+      <PostList posts={sortedAndSearchedPost} title="Посты про JS" remove={removePost} />
       <Footer />
     </div>
   );
